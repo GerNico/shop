@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+  <changeSet author="GerNico" id="2021-10-06_1">
+    <sql>
+      CREATE SEQUENCE IF NOT EXISTS shop.users_seq;
+
+      CREATE TABLE IF NOT EXISTS shop.users (
+        id  bigint    default nextval('shop.users_seq'::regclass) not null
+        constraint pk_ticket_id        primary key,
+        userName   VARCHAR(32)  NOT NULL UNIQUE,
+        password   VARCHAR(128)  NOT NULL,
+        email      VARCHAR(320) NOT NULL UNIQUE,
+        roleString VARCHAR(32)  NOT NULL);
+    </sql>
+  </changeSet>
+</databaseChangeLog>

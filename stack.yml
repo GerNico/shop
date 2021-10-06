@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+
+  commproxy-db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./src/main/resources/db:/docker-entrypoint-initdb.d/
+    ports:
+      - 5433:5432
